@@ -2,11 +2,18 @@ import * as Actions from "../action/uiActions";
 
 const intialState = {
   isOpen: false,
+  categoryDialog:false,
   msg: "",
 };
 
 const uiReducer = (state = intialState, action) => {
   switch (action.type) {
+    case Actions.TOGGLE_CATEGORY_DIALOG:{
+         return {
+         ...state,
+         categoryDialog:!state.categoryDialog  
+        };
+    }
     case Actions.FAILED: {
       return {
         ...state,

@@ -2,6 +2,7 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Register from "../Components/Auth/Register";
 import Login from "../Components/Auth/Login";
 import Header from "../Components/UI/Header";
+import Category from "../Components/User/Category";
 const AppRoutes =()=> {
     return (
       <div>
@@ -12,7 +13,7 @@ const AppRoutes =()=> {
               <Login />
             </Route>
             <Route exact path="/register" component={Register} />
-            
+            <Route exact path="/dashboard" component={Category} />   
           </Switch>
         </Router>
       </div>
