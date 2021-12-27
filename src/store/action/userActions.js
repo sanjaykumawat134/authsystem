@@ -82,6 +82,40 @@ export const logout = () => {
         dispatch({
           type: LOGOUT,
         });
+        return true;
+      }
+    } catch (error) {
+      console.log("Error ", error);
+    }
+  };
+};
+
+
+export const resetPassword = (userId,token,password) => {
+  return async (dispatch, getState) => {
+    try {
+      const resp = await axios.post(`http://localhost:3000/users/${userId}/${token}`,{
+          password
+      });
+      if(resp.status ===200){
+        return true;
+      }
+     
+    } catch (error) {
+      console.log("Error ", error);
+    }
+  };
+};
+
+
+export const passwordResetRequest = (email) => {
+  return async (dispatch, getState) => {
+    try {
+      const resp = await axios.post(`http://localhost:3000/users/reset-password`,{
+          email
+      });
+      if(resp.status ===200){
+        return true;
       }
     } catch (error) {
       console.log("Error ", error);

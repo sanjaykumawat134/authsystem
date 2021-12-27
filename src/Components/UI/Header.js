@@ -8,8 +8,11 @@ import MenuIcon from '@mui/icons-material/Menu';
 import AccountCircle from '@mui/icons-material/AccountCircle';
 import MenuItem from '@mui/material/MenuItem';
 import Menu from '@mui/material/Menu';
-
-const Header =()=> {
+import LogoutIcon from '@mui/icons-material/Logout';
+import {logout} from "../../store/action/userActions";
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
+const Header =(props)=> {
   const [anchorEl, setAnchorEl] = React.useState(null);
   const handleMenu = (event) => {
     setAnchorEl(event.currentTarget);
@@ -18,6 +21,15 @@ const Header =()=> {
   const handleClose = () => {
     setAnchorEl(null);
   };
+  const handleLogout = ()=>{
+    props.logout().then((result)=>{
+      if(result){
+        alert("logout successfully")
+      }else{
+        alert("something happened wrong")
+      }
+    })
+  }
 
   return (
     <Box sx={{ flexGrow: 1 }}>
@@ -66,10 +78,29 @@ const Header =()=> {
                 <MenuItem onClick={handleClose}>My account</MenuItem>
               </Menu>
             </div>
-         
+                {
+                   props.isLoggedIn &&( <IconButton onClick={handleLogout}>
+                   <LogoutIcon />
+                    </IconButton>)
+                }  
         </Toolbar>
       </AppBar>
     </Box>
   );
 }
-export default Header;
+
+const mapStateToProps = (state) => {
+  return {
+    isLoggedIn : state.user.isLoggedIn
+  };
+};
+
+const mapDispatchToProps = (dispatch) => {
+  return bindActionCreators(
+    {
+           logout,
+    },
+    dispatch
+  );
+};
+export default connect(mapStateToProps, mapDispatchToProps)(Header);

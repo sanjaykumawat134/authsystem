@@ -6,7 +6,6 @@ import { getAllCategories } from "../../store/action/categoryActions";
 import { toggleCategoryDialog } from "../../store/action/uiActions";
 import SimpleDialog from "../UI/SimpleDialog";
 import CategoryForm from "./CategoryForm";
-
 import CheckboxTree from 'react-checkbox-tree';
 import 'react-checkbox-tree/lib/react-checkbox-tree.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'

@@ -8,6 +8,9 @@ import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 import { withFormik } from "formik";
 import {login} from "../../store/action/userActions";
+import {
+  Link
+} from "react-router-dom";
 const useStyles = makeStyles({
     root: {
       flexGrow: 1,
@@ -142,6 +145,7 @@ const useStyles = makeStyles({
               </div>
               <div className="flex m-2 justify-center">
                 <ButtonGroup className={`m-1`}>
+                  
                   <Button
                     color="primary"
                     className={`${classes.button}`}
@@ -161,6 +165,9 @@ const useStyles = makeStyles({
                     Cancel
                   </Button>
                 </ButtonGroup>
+                <div>
+                <Link to="/forgot-password">Forgort password</Link>
+                </div>
               </div>
             </form>
           </div>
