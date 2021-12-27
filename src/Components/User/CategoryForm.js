@@ -8,6 +8,7 @@ import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 import { withFormik } from "formik";
 import { addCategory } from "../../store/action/categoryActions";
+import { toggleCategoryDialog } from "../../store/action/uiActions";
 const useStyles = makeStyles({
     root: {
       flexGrow: 1,
@@ -155,7 +156,7 @@ const useStyles = makeStyles({
                     className={`${classes.button}`}
                     variant="contained"
                     type="reset"
-                    onClick={() => {}}
+                    onClick={() => { props.toggleCategoryDialog()}}
                   >
                     Cancel
                   </Button>
@@ -180,8 +181,9 @@ const useStyles = makeStyles({
       try {
         setSubmitting(true);
          props.addCategory(values)
+
         setSubmitting(false);
-     
+        props.toggleCategoryDialog();
       } catch (error) {
 
       }
@@ -199,7 +201,8 @@ const useStyles = makeStyles({
   const mapDispatchToProps = (dispatch) => {
     return bindActionCreators(
       {
-       addCategory
+       addCategory,
+       toggleCategoryDialog
       },
       dispatch
     );

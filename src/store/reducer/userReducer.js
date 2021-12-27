@@ -1,7 +1,7 @@
 import * as Actions from "../action/userActions";
 
 const intialState = {
-  isLoggedIn: false,
+  isLoggedIn: localStorage.getItem("authToken")?true: false,
   activeUser: null,
   authToken: null,
   authenticating: true,
